@@ -19,7 +19,11 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--secondary-color);
-    padding-top: 100px; /* Add this line - adjust value based on your nav height */
+    padding-top: 100px;
+}
+
+body.no-scroll {
+    overflow: hidden;
 }
 
 .hero {
@@ -56,6 +60,28 @@ body {
 
 .hero-content p {
     font-size: 1.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background-color: #0095c8;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 main {
@@ -143,5 +169,10 @@ h3 {
     
     .hero-content p {
         font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 0.8rem 1.6rem;
     }
 }

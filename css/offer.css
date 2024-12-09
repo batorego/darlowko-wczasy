@@ -1,0 +1,92 @@
+.offer-content {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.room-gallery {
+    order: 1;
+}
+
+.general-description {
+    order: 2;
+    position: sticky;
+    top: 120px;
+}
+
+@media (max-width: 1024px) {
+    .offer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .room-gallery {
+        order: 2;
+    }
+
+    .general-description {
+        order: 1;
+        position: static;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .general-description h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .general-description h3 {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+    }
+
+    .general-description p {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .general-description ul {
+        margin: 0.5rem 0;
+        padding-left: 1.2rem;
+    }
+
+    .general-description li {
+        font-size: 0.95rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.3;
+    }
+
+    .offer-content {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .general-description {
+        padding: 1rem;
+    }
+
+    .general-description h2 {
+        font-size: 1.3rem;
+    }
+
+    .general-description h3 {
+        font-size: 1.1rem;
+    }
+
+    .general-description p,
+    .general-description li {
+        font-size: 0.9rem;
+    }
+}

@@ -28,6 +28,7 @@
    <link rel="stylesheet" href="css/main.css">
    <link rel="stylesheet" href="css/gallery.css">
    <link rel="stylesheet" href="css/navigation.css">
+   <link rel="stylesheet" href="css/offer.css">
 
    <!-- Favicon -->
    <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -106,6 +107,11 @@
                 </a>
             </div>
             <div class="logo">Noclegi w Darłówku</div>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Strona główna</a></li>
                 <li><a href="oferta.html" class="active">Oferta</a></li>
@@ -117,29 +123,32 @@
 
     <div id="app">
         <main class="offer-content">
-            <section class="general-description">
-                <h2>Nasza Oferta</h2>
-                <p>Oferujemy Państwu pokoje 2, 3, 4-osobowe z łazienkami, w cichej i spokojnej okolicy Darłówka, w odległości 250m od morza, 80m od portu, 100m od deptaka.</p>
-                <p>Pokoje wyposażone w łazienki, TV, czajnik, lodówkę, parawany plażowe. Do dyspozycji gości kącik do grillowania, aneks kuchenny z wyposażeniem. Po drugiej stronie ulicy znajduje się stołówka, a około 100m. dalej bary, smażalnie ryb, restauracje, sklepy.</p>
-                
-                <h3>Atrakcje w okolicy:</h3>
-                <ul>
-                    <li>latarnia i port rybacki</li>
-                    <li>XIII w kościół</li>
-                    <li>Zamek Książąt Pomorskich</li>
-                    <li>park wodny z atrakcjami zarówno dla dzieci jak i dorosłych</li>
-                    <li>rejsy repliką XVIII-wiecznego statku</li>
-                    <li>muzeum militarne wraz z strzelnica (Melechów niedaleko Darłówka)</li>
-                </ul>
-            </section>
+            <div class="offer-grid">
+                <section class="room-gallery">
+                    <h2>Galeria Pokoi</h2>
+                    <div class="gallery-grid" id="roomGallery"></div>
+                </section>
 
-            <section class="room-gallery">
-                <h2>Galeria Pokoi</h2>
-                <div class="gallery-grid" id="roomGallery"></div>
-            </section>
+                <section class="general-description">
+                    <h2>Nasza Oferta</h2>
+                    <p>Oferujemy Państwu pokoje 2, 3, 4-osobowe z łazienkami, w cichej i spokojnej okolicy Darłówka, w odległości 250m od morza, 80m od portu, 100m od deptaka.</p>
+                    <p>Pokoje wyposażone w łazienki, TV, czajnik, lodówkę, parawany plażowe. Do dyspozycji gości kącik do grillowania, aneks kuchenny z wyposażeniem. Po drugiej stronie ulicy znajduje się stołówka, a około 100m. dalej bary, smażalnie ryb, restauracje, sklepy.</p>
+                    
+                    <h3>Atrakcje w okolicy:</h3>
+                    <ul>
+                        <li>latarnia i port rybacki</li>
+                        <li>XIII w kościół</li>
+                        <li>Zamek Książąt Pomorskich</li>
+                        <li>park wodny z atrakcjami zarówno dla dzieci jak i dorosłych</li>
+                        <li>rejsy repliką XVIII-wiecznego statku</li>
+                        <li>muzeum militarne wraz z strzelnica (Melechów niedaleko Darłówka)</li>
+                    </ul>
+                </section>
+            </div>
         </main>
     </div>
 
+    <script src="js/navigation.js"></script>
     <script src="js/gallery.js" type="module"></script>
 </body>
 </html>
