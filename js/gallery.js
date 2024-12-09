@@ -20,6 +20,10 @@ const galleryImages = {
         { thumb: 'images/thumbnails/thumb_14373467930_663ef97e21.jpg', full: 'images/originals/14373467930_663ef97e21.jpg', description: 'Wejście na piętro' }
     ],
     main: [
+        { src: 'images/originals/marina.jpg', description: 'Widok na nadbrzeże' },
+        { src: 'images/originals/brzeg.jpg', description: 'Plaże Darłowa' },
+        { src: 'images/originals/burza.jpg', description: 'W czasie sztormu' },
+        
         { src: 'foty2012/dom_nowe.jpg', description: 'Dom od frontu' },
         { src: 'https://farm2.staticflickr.com/1770/42373073334_d6a980ac3a_b.jpg', description: 'Dom' },
         { src: 'https://farm2.staticflickr.com/1821/29219314568_578ed703e7_b.jpg', description: 'Dom' },
