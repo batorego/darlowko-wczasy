@@ -9,8 +9,6 @@ const galleryImages = {
         { thumb: 'images/thumbnails/thumb_8845952060_e462246c90_o.jpg', full: 'images/originals/8845952060_e462246c90_o.jpg', description: 'Pokój nr 3' },
         { thumb: 'images/thumbnails/thumb_pok_3.jpg', full: 'images/originals/pok_3.jpg', description: 'Wejście do pokoju nr 3' },
         { thumb: 'images/thumbnails/thumb_42188335295_a3bd57ed9c_b.jpg', full: 'images/originals/42188335295_a3bd57ed9c_b.jpg', description: 'Pokój nr 4' },
-        { thumb: 'images/thumbnails/thumb_41281649900_d176a954cb_b.jpg', full: 'images/originals/41281649900_d176a954cb_b.jpg', description: 'Pokój z tarasem i kominkiem (część wypoczynkowa)' },
-        { thumb: 'images/thumbnails/thumb_43093426751_90caef7ba4_b.jpg', full: 'images/originals/43093426751_90caef7ba4_b.jpg', description: 'Pokój z tarasem i kominkiem (część sypialniana)' },
         { thumb: 'images/thumbnails/thumb_42188338255_49708d667f_b.jpg', full: 'images/originals/42188338255_49708d667f_b.jpg', description: 'Pokój nr 6' },
         { thumb: 'images/thumbnails/thumb_42188337465_d808bded2d_b.jpg', full: 'images/originals/42188337465_d808bded2d_b.jpg', description: 'Pokój nr 7' },
         { thumb: 'images/thumbnails/thumb_42188338635_0304140ec1_b.jpg', full: 'images/originals/42188338635_0304140ec1_b.jpg', description: 'Pokój nr 8' },
@@ -34,7 +32,7 @@ const galleryImages = {
         { src: 'http://c4.staticflickr.com/4/3946/15556434807_7647b023fa_c.jpg', description: 'Regaty w Darłówku' },
         { src: 'http://c2.staticflickr.com/8/7557/15121653514_d8b672fd3a_b.jpg', description: 'Dolina Charlotty' },
         { src: 'http://farm4.staticflickr.com/3790/12150196776_6c4010fc4e_b.jpg', description: 'Regaty w Darłówku' },
-        { src: 'http://farm8.staticflickr.com/7380/12150174516_eb8a913f28_b.jpg', description: 'Pokazy wojskowe w Darłówku' }
+        { src: 'http://farm8.staticflickr.com/7380/12150174516_eb8a913f28_b.jpg', description: 'Muzeum militarne w Melechowie' }
     ]
 };
 
