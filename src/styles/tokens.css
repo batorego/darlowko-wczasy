@@ -1,0 +1,59 @@
+/*
+ * Design tokens — „świeży nadmorski"
+ * Paleta wyprowadzona ze zdjęcia plaży w Darłówku o złotej godzinie
+ * (src/assets/photos/okolica/plaza-brzeg-morza.jpg).
+ * Wszystkie pary kolorów tekst/tło spełniają WCAG AA (większość AAA).
+ */
+:root {
+  /* kolor */
+  --sand-50: #fdfbf7;   /* tło strony */
+  --sand-100: #f6efe1;  /* sekcje naprzemienne, karty */
+  --sand-200: #ede1c8;  /* obramowania, tła ikon */
+  --dune-300: #d9c49a;  /* akcenty wydmowe, linie ozdobne */
+  --sea-100: #ddebf2;   /* delikatne tła informacyjne */
+  --sea-500: #2e7d9e;   /* hover linków, drobne akcenty */
+  --sea-700: #0b4f6c;   /* kolor marki: linki, przyciski drugorzędne (biały tekst 8:1) */
+  --sea-900: #0a2e3d;   /* stopka, pasma ciemne, nagłówki na jasnym */
+  --sun-400: #f4a261;   /* CTA — WYŁĄCZNIE z ciemnym tekstem --ink (7:1); nigdy biały */
+  --sun-500: #e98a3c;   /* CTA hover (z --ink 5.8:1) */
+  --ink: #1f2933;       /* tekst podstawowy (14:1 na --sand-50) */
+  --ink-soft: #52606d;  /* tekst drugorzędny (7:1 na --sand-50) */
+  --white: #ffffff;
+
+  --focus-ring: 2px solid var(--sea-700);
+
+  /* typografia */
+  --font-display: 'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Nunito Sans Variable', 'Segoe UI', system-ui, sans-serif;
+
+  --text-sm: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.96rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.2rem + 0.9vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.45rem + 1.5vw, 2.375rem);
+  --text-3xl: clamp(2.125rem, 1.7rem + 2.2vw, 3rem);
+  --text-hero: clamp(2.375rem, 1.6rem + 3.9vw, 4.25rem);
+
+  /* odstępy */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* kształt i cień */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-pill: 999px;
+  --shadow-1: 0 1px 3px rgb(10 46 61 / 0.08);
+  --shadow-2: 0 10px 30px rgb(10 46 61 / 0.14);
+
+  --maxw-content: 72rem;
+  --maxw-prose: 42rem;
+
+  --nav-height: 4.25rem;
+}

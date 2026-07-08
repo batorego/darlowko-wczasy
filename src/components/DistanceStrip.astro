@@ -1,0 +1,99 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="distances" aria-label="Odległości od najważniejszych miejsc">
+  <div class="container">
+    <ol class="distance-path">
+      <li class="distance-stop distance-stop--home">
+        <span class="distance-value">Dom</span>
+        <span class="distance-label">ul. Pomorska 15</span>
+      </li>
+      {
+        site.distances.map((d) => (
+          <li class="distance-stop">
+            <span class="distance-value">
+              {d.value}
+              <small>{d.unit}</small>
+            </span>
+            <span class="distance-label">{d.label}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .distances {
+    background: var(--sand-100);
+    border-bottom: 1px solid var(--sand-200);
+  }
+
+  .distance-path {
+    list-style: none;
+    padding: var(--space-8) 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    position: relative;
+  }
+
+  /* kropkowana ścieżka: dom → port → deptak → plaża */
+  .distance-path::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--space-8) + 1.05rem);
+    left: 12%;
+    right: 12%;
+    border-top: 3px dotted var(--dune-300);
+  }
+
+  .distance-stop {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-1);
+  }
+
+  .distance-value {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.15em;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--sea-700);
+    background: var(--sand-100);
+    padding-inline: var(--space-3);
+  }
+
+  .distance-value small {
+    font-size: 0.55em;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+
+  .distance-stop--home .distance-value {
+    color: var(--sea-900);
+  }
+
+  .distance-label {
+    font-size: var(--text-sm);
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 700px) {
+    .distance-path {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: var(--space-6);
+    }
+
+    .distance-path::before {
+      display: none;
+    }
+  }
+</style>

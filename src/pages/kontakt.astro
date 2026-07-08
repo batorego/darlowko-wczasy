@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+
+const mapEmbedSrc =
+  'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9282.091985616307!2d16.3811035!3d54.4360546!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x295f9adb217325a8!2sMorze+u+Nas+Pokoje+Dar%C5%82%C3%B3wko!5e0!3m2!1spl!2spl!4v1530377137608';
+---
+
+<BaseLayout
+  title="Kontakt i rezerwacja — tel. 516 340 545 | Morze u Nas Darłówko"
+  description="Zarezerwuj nocleg w Darłówku telefonicznie: 516 340 545. Morze u Nas, ul. Pomorska 15, Darłówko Zachodnie — 250 m od plaży. Sprawdź dojazd na mapie."
+>
+  <PageHeader
+    eyebrow="Kontakt"
+    title="Kontakt i rezerwacja noclegu w Darłówku"
+    lead="Rezerwacje przyjmujemy telefonicznie. Zadzwoń — odpowiemy na pytania o wolne terminy, pokoje i dojazd."
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-card">
+        <h2>Dane kontaktowe</h2>
+        <a class="contact-phone" href={site.phoneHref}>
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"
+            ></path>
+          </svg>
+          {site.phoneDisplay}
+        </a>
+        <address>
+          <strong>{site.name}</strong><br />
+          {site.address.street}<br />
+          {site.address.zip} {site.address.locality}
+        </address>
+        <p>
+          E-mail:
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <h2>Zaliczka przelewem</h2>
+        <p>Rezerwację potwierdzamy zaliczką na konto:</p>
+        <dl class="bank-details">
+          <dt>Bank</dt>
+          <dd>{site.bank.name}</dd>
+          <dt>Numer konta</dt>
+          <dd class="bank-account">{site.bank.account}</dd>
+          <dt>Właściciel</dt>
+          <dd>{site.bank.owner}</dd>
+        </dl>
+        <p class="bank-note">{site.bank.transferTitle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Dojazd</p>
+        <h2>Znajdziesz nas przy ul. Pomorskiej 15</h2>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src={mapEmbedSrc}
+          title="Mapa dojazdu — Morze u Nas, ul. Pomorska 15, Darłówko Zachodnie"
+          width="100%"
+          height="440"
+          style="border:0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="map-links">
+        <a href={site.mapUrl} rel="noopener">Otwórz w Google Maps</a>
+        ·
+        <a href="https://mdarlowo.e-mapa.net/" rel="noopener">Plan miasta Darłowo</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: var(--space-8);
+  }
+
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--sand-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    display: grid;
+    gap: var(--space-4);
+    align-content: start;
+    justify-items: start;
+  }
+
+  .contact-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--sea-700);
+    text-decoration: none;
+  }
+
+  .contact-phone:hover {
+    color: var(--sea-500);
+  }
+
+  address {
+    font-style: normal;
+    line-height: 1.7;
+  }
+
+  .bank-details {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .bank-details dt {
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+
+  .bank-details dd {
+    margin: 0;
+  }
+
+  .bank-account {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    color: var(--sea-900);
+  }
+
+  .bank-note {
+    font-size: var(--text-sm);
+    color: var(--ink-soft);
+    border-top: 1px solid var(--sand-200);
+    padding-top: var(--space-3);
+  }
+
+  .map-frame {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-1);
+  }
+
+  .map-frame iframe {
+    display: block;
+  }
+
+  .map-links {
+    margin-top: var(--space-4);
+    color: var(--ink-soft);
+  }
+</style>

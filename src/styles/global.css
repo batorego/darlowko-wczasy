@@ -1,0 +1,251 @@
+@import './tokens.css';
+
+/* --- reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* kotwice nie chowają się pod przyklejoną nawigacją */
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--sand-50);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- typografia --- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--sea-900);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+p {
+  max-width: var(--maxw-prose);
+}
+
+a {
+  color: var(--sea-700);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--sea-500);
+}
+
+ul,
+ol {
+  padding-inline-start: 1.25rem;
+}
+
+strong {
+  font-weight: 750;
+}
+
+::selection {
+  background: var(--sun-400);
+  color: var(--ink);
+}
+
+/* --- focus --- */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: calc(-100% - 4rem);
+  z-index: 100;
+  background: var(--sea-900);
+  color: var(--white);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: var(--space-4);
+  color: var(--white);
+}
+
+/* --- utili --- */
+.container {
+  width: min(100% - 2.5rem, var(--maxw-content));
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sea-700);
+}
+
+/* --- sekcje --- */
+.section {
+  padding-block: var(--space-16);
+}
+
+.section--sand {
+  background: var(--sand-100);
+}
+
+.section--dark {
+  background: var(--sea-900);
+}
+
+.section--dark h2,
+.section--dark p {
+  color: var(--sand-50);
+}
+
+.section-head {
+  max-width: var(--maxw-prose);
+  margin-bottom: var(--space-8);
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* --- przyciski --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.8em 1.6em;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--sun {
+  background: var(--sun-400);
+  color: var(--ink);
+}
+
+.btn--sun:hover {
+  background: var(--sun-500);
+  color: var(--ink);
+}
+
+.btn--sea {
+  background: var(--sea-700);
+  color: var(--white);
+}
+
+.btn--sea:hover {
+  background: var(--sea-500);
+  color: var(--white);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn--ghost:hover {
+  background: rgb(255 255 255 / 0.15);
+  color: var(--white);
+}
+
+/* --- karty --- */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-3px);
+}
+
+/* --- ruch --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://darlowko-wczasy.pl/sitemap.xml

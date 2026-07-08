@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import JsonLd from '../components/JsonLd.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faq } from '../data/faq';
+
+// Do FAQPage JSON-LD trafiają wyłącznie potwierdzone odpowiedzi.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq
+    .filter((entry) => entry.confirmed)
+    .map((entry) => ({
+      '@type': 'Question',
+      name: entry.question,
+      acceptedAnswer: { '@type': 'Answer', text: entry.answer },
+    })),
+};
+---
+
+<BaseLayout
+  title="Informacje praktyczne — doba, parking, dojazd | Morze u Nas Darłówko"
+  description="Najczęstsze pytania o nocleg w Morze u Nas w Darłówku: rezerwacja i zaliczka, odległość do plaży, wyposażenie pokoi, wyżywienie, dojazd i atrakcje okolicy."
+>
+  <JsonLd data={faqJsonLd} />
+
+  <PageHeader
+    eyebrow="Informacje praktyczne"
+    title="Najczęstsze pytania o pobyt"
+    lead="Zebraliśmy odpowiedzi na pytania, które słyszymy najczęściej. Nie znajdziesz swojego? Zadzwoń: 516 340 545."
+  />
+
+  <section class="section">
+    <div class="container faq-wrap">
+      {
+        faq.map((entry, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary>
+              <span>{entry.question}</span>
+              <svg
+                class="faq-chevron"
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <p>{entry.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    title="Masz inne pytanie?"
+    note="Odpowiemy od razu — telefon to u nas najszybsza droga."
+  />
+</BaseLayout>
+
+<style>
+  .faq-wrap {
+    max-width: 50rem;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--sand-200);
+    border-radius: var(--radius-md);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    list-style: none;
+    cursor: pointer;
+    padding: var(--space-4) var(--space-6);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--sea-900);
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary:hover {
+    color: var(--sea-700);
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--sea-700);
+    transition: transform 200ms ease;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-item > p {
+    padding: 0 var(--space-6) var(--space-6);
+    color: var(--ink-soft);
+    max-width: none;
+  }
+</style>

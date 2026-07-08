@@ -1,0 +1,120 @@
+---
+// Lightbox: natywny <dialog> — focus trap i Esc obsługuje przeglądarka.
+// Bez JS linki galerii otwierają po prostu zoptymalizowany plik WebP.
+---
+
+<dialog class="lightbox" id="lightbox" aria-label="Podgląd zdjęcia">
+  <button class="lightbox-close" type="button" data-lightbox-close>
+    <span aria-hidden="true">×</span>
+    <span class="visually-hidden">Zamknij podgląd</span>
+  </button>
+  <button class="lightbox-arrow lightbox-prev" type="button" data-lightbox-prev>
+    <span aria-hidden="true">‹</span>
+    <span class="visually-hidden">Poprzednie zdjęcie</span>
+  </button>
+  <figure>
+    <img src="" alt="" />
+    <figcaption class="lightbox-caption" aria-live="polite"></figcaption>
+  </figure>
+  <button class="lightbox-arrow lightbox-next" type="button" data-lightbox-next>
+    <span aria-hidden="true">›</span>
+    <span class="visually-hidden">Następne zdjęcie</span>
+  </button>
+</dialog>
+
+<style>
+  .lightbox {
+    /* margin:auto przywraca centrowanie <dialog> nadpisane przez globalny reset */
+    margin: auto;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: min(94vw, 74rem);
+    max-height: 92vh;
+    overflow: visible;
+  }
+
+  .lightbox::backdrop {
+    background: rgb(7 23 31 / 0.9);
+  }
+
+  .lightbox figure {
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-3);
+  }
+
+  .lightbox img {
+    max-width: min(90vw, 70rem);
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-2);
+    background: var(--sea-900);
+  }
+
+  .lightbox-caption {
+    color: var(--sand-50);
+    font-size: var(--text-base);
+    text-align: center;
+  }
+
+  .lightbox button {
+    position: fixed;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: rgb(253 251 247 / 0.14);
+    color: var(--white);
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+
+  .lightbox button:hover {
+    background: rgb(253 251 247 / 0.3);
+  }
+
+  .lightbox-close {
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+
+  .lightbox-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lightbox-prev {
+    left: var(--space-4);
+  }
+
+  .lightbox-next {
+    right: var(--space-4);
+  }
+
+  @media (max-width: 640px) {
+    .lightbox-arrow {
+      top: auto;
+      bottom: var(--space-4);
+      transform: none;
+    }
+
+    .lightbox-prev {
+      left: var(--space-6);
+    }
+
+    .lightbox-next {
+      right: var(--space-6);
+    }
+  }
+</style>
+
+<script src="../scripts/lightbox.ts"></script>

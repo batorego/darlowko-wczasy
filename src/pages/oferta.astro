@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import Lightbox from '../components/Lightbox.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { offerRoomStrip } from '../data/gallery';
+
+const attractions = [
+  {
+    name: 'Latarnia morska i port rybacki',
+    detail: 'symbol Darłówka, 80 m od domu — idealny cel wieczornego spaceru',
+  },
+  {
+    name: 'Rejsy repliką XVIII-wiecznego statku',
+    detail: 'wypłynięcie z portu w Darłówku',
+  },
+  {
+    name: 'Park wodny',
+    detail: 'atrakcje dla dzieci i dorosłych, świetny na niepogodę',
+  },
+  {
+    name: 'Zamek Książąt Pomorskich w Darłowie',
+    detail: 'jedyny nadmorski zamek gotycki w Polsce',
+  },
+  {
+    name: 'Kościół z XIII wieku',
+    detail: 'gotycka architektura w centrum Darłowa',
+  },
+  {
+    name: 'Muzeum militarne ze strzelnicą',
+    detail: 'Melechów niedaleko Darłówka',
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Pokoje 2, 3 i 4-osobowe z łazienkami — oferta | Morze u Nas Darłówko"
+  description="Przestronne pokoje 2-4 osobowe z łazienkami, TV i lodówką — 250 m od plaży w Darłówku. Do dyspozycji gości kącik grillowy, aneks kuchenny i parawany plażowe."
+>
+  <PageHeader
+    eyebrow="Oferta"
+    title="Pokoje z łazienkami w Darłówku"
+    lead="Oferujemy pokoje 2-, 3- i 4-osobowe z łazienkami, w cichej i spokojnej okolicy Darłówka — 250 m od morza, 80 m od portu i 100 m od deptaka."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Wyposażenie</p>
+        <h2>Wszystko, czego potrzeba na wakacje</h2>
+        <p>
+          Każdy pokój ma własną łazienkę, telewizor, czajnik i lodówkę.
+          Do dyspozycji gości oddajemy wspólny aneks kuchenny z pełnym
+          wyposażeniem oraz kącik do grillowania w ogrodzie.
+        </p>
+      </div>
+      <FeatureGrid />
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Pokoje</p>
+        <h2>Zobacz, gdzie zamieszkasz</h2>
+      </div>
+      <GalleryGrid photos={offerRoomStrip} group="pokoje-oferta" />
+      <p class="section-more">
+        <a class="btn btn--sea" href="/galeria.html">Wszystkie zdjęcia pokoi</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Wyżywienie po sąsiedzku</p>
+        <h2>Obiad? Po drugiej stronie ulicy</h2>
+        <p>
+          Naprzeciwko domu działa stołówka, a około 100 metrów dalej znajdziesz
+          bary, smażalnie ryb, restauracje i sklepy — wszystko w zasięgu
+          krótkiego spaceru, bez samochodu.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand" id="atrakcje">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Atrakcje w okolicy</p>
+        <h2>Co warto zobaczyć w Darłówku i Darłowie</h2>
+      </div>
+      <ul class="attractions" role="list">
+        {
+          attractions.map((attraction) => (
+            <li class="attraction">
+              <h3>{attraction.name}</h3>
+              <p>{attraction.detail}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Zapytaj o wolne terminy"
+    note="Najszybciej sprawdzisz dostępność telefonicznie — odbieramy codziennie."
+  />
+  <Lightbox />
+</BaseLayout>
+
+<style>
+  .section-more {
+    margin-top: var(--space-8);
+  }
+
+  .attractions {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: var(--space-4);
+  }
+
+  .attraction {
+    background: var(--white);
+    border: 1px solid var(--sand-200);
+    border-left: 4px solid var(--sun-400);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .attraction h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-1);
+  }
+
+  .attraction p {
+    color: var(--ink-soft);
+    font-size: var(--text-sm);
+  }
+</style>

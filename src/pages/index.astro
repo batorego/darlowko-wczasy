@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import DistanceStrip from '../components/DistanceStrip.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import Lightbox from '../components/Lightbox.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { homeTeaser } from '../data/gallery';
+import domPhoto from '../assets/photos/dom/dom-morze-u-nas-1.jpg';
+import zachodPhoto from '../assets/photos/okolica/zachod-slonca-darlowko.jpg';
+---
+
+<BaseLayout
+  title="Noclegi w Darłówku 250 m od plaży — pokoje z łazienkami | Morze u Nas"
+  description="Wynajmujemy pokoje 2, 3 i 4-osobowe z łazienkami w Darłówku Zachodnim — 250 m od plaży, 80 m od portu. Cicha okolica, kącik grillowy, aneks kuchenny. Zadzwoń: 516 340 545."
+>
+  <Hero />
+  <DistanceStrip />
+
+  <section class="section">
+    <div class="container split">
+      <div class="split-media">
+        <Image
+          src={domPhoto}
+          alt="Dom Morze u Nas — podjazd i zadbany ogród"
+          widths={[480, 768, 1024]}
+          sizes="(max-width: 900px) 92vw, 46vw"
+          format="webp"
+          quality={80}
+          loading="lazy"
+        />
+      </div>
+      <div class="split-body">
+        <p class="eyebrow">Nasz dom</p>
+        <h2>Jak u siebie, tylko bliżej morza</h2>
+        <p>
+          Od lat przyjmujemy gości w rodzinnej atmosferze, w cichej i spokojnej
+          części Darłówka Zachodniego. Na posesji czekają zadbany ogród,
+          kącik grillowy i miejsce na wieczorne rozmowy po dniu na plaży.
+        </p>
+        <p>
+          Po drugiej stronie ulicy znajduje się stołówka, a około 100 metrów
+          dalej — bary, smażalnie ryb, restauracje i sklepy.
+        </p>
+        <a class="btn btn--sea" href="/oferta.html">Poznaj naszą ofertę</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Pokoje i udogodnienia</p>
+        <h2>Pokoje 2-, 3- i 4-osobowe, każdy z łazienką</h2>
+        <p>
+          Wszystkie pokoje mają własne łazienki, telewizor, czajnik i lodówkę.
+          Na plażę wypożyczamy parawany — bez dodatkowych opłat.
+        </p>
+      </div>
+      <FeatureGrid />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Galeria</p>
+        <h2>Zajrzyj do środka</h2>
+      </div>
+      <GalleryGrid photos={homeTeaser} group="teaser" />
+      <p class="section-more">
+        <a class="btn btn--sea" href="/galeria.html">Zobacz całą galerię</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container split split--reverse">
+      <div class="split-media">
+        <Image
+          src={zachodPhoto}
+          alt="Zachód słońca nad morzem w Darłówku"
+          widths={[480, 768]}
+          sizes="(max-width: 900px) 92vw, 46vw"
+          format="webp"
+          quality={80}
+          loading="lazy"
+        />
+      </div>
+      <div class="split-body">
+        <p class="eyebrow">Okolica</p>
+        <h2>Darłówko ma więcej niż plażę</h2>
+        <p>
+          Latarnia morska i port rybacki, rejsy repliką XVIII-wiecznego statku,
+          park wodny, Zamek Książąt Pomorskich i gotycki kościół z XIII wieku —
+          wszystko w zasięgu spaceru lub krótkiej wycieczki.
+        </p>
+        <div class="split-actions">
+          <a class="btn btn--sea" href="/oferta.html#atrakcje">
+            Atrakcje w okolicy
+          </a>
+          <a class="split-link" href="/galeria.html#z-drona">
+            Zobacz Darłówko z drona
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+  <Lightbox />
+</BaseLayout>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .split--reverse .split-media {
+    order: 2;
+  }
+
+  .split-media :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-2);
+  }
+
+  .split-body {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+
+  .section-more {
+    margin-top: var(--space-8);
+  }
+
+  .split-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .split-link {
+    font-weight: 650;
+  }
+
+  @media (max-width: 900px) {
+    .split {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .split--reverse .split-media {
+      order: 0;
+    }
+  }
+</style>

@@ -1,0 +1,210 @@
+---
+import { site, navLinks } from '../data/site';
+import logo from '../assets/logo.svg';
+
+// Aktywny link: normalizacja ścieżek dev ("/oferta") i builda ("/oferta.html")
+const normalize = (p: string) =>
+  p.replace(/\.html$/, '').replace(/\/index$/, '/') || '/';
+const current = normalize(Astro.url.pathname);
+---
+
+<header class="site-header">
+  <nav class="container nav" aria-label="Nawigacja główna">
+    <a class="brand" href="/">
+      <img src={logo.src} alt={`${site.name} — ${site.tagline}`} width="146" height="48" />
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+    >
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+
+    <div class="nav-panel" id="nav-menu">
+      <ul class="nav-list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={normalize(link.href) === current ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn btn--sun nav-phone" href={site.phoneHref}>
+        <svg
+          aria-hidden="true"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"
+          ></path>
+        </svg>
+        {site.phoneDisplay}
+      </a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgb(253 251 247 / 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--sand-200);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: var(--nav-height);
+  }
+
+  .brand {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .brand img {
+    width: 146px;
+    height: 48px;
+  }
+
+  .nav-panel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+  }
+
+  .nav-list a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--ink);
+    text-decoration: none;
+    padding-block: var(--space-2);
+    border-bottom: 3px solid transparent;
+  }
+
+  .nav-list a:hover {
+    color: var(--sea-700);
+  }
+
+  .nav-list a[aria-current='page'] {
+    color: var(--sea-700);
+    border-bottom-color: var(--sun-400);
+  }
+
+  .nav-phone {
+    padding: 0.55em 1.2em;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .nav-toggle__bar {
+    display: block;
+    width: 100%;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--sea-900);
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  @media (max-width: 900px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-panel {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-6) var(--space-8);
+      background: var(--sand-50);
+      border-bottom: 1px solid var(--sand-200);
+      box-shadow: var(--shadow-2);
+    }
+
+    .nav-panel.open {
+      display: flex;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--sand-200);
+    }
+
+    .nav-list a[aria-current='page'] {
+      border-bottom-color: var(--sun-400);
+    }
+
+    .nav-phone {
+      justify-content: center;
+    }
+
+    .nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded='true'] .nav-toggle__bar:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+  }
+</style>
+
+<script src="../scripts/nav.ts"></script>

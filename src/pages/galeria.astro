@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import Lightbox from '../components/Lightbox.astro';
+import CtaBand from '../components/CtaBand.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
+import DroneFab from '../components/DroneFab.astro';
+import { roomPhotos, housePhotos, surroundingPhotos } from '../data/gallery';
+import ogPhoto from '../assets/photos/okolica/plaza-brzeg-morza.jpg';
+---
+
+<BaseLayout
+  title="Galeria zdjęć — pokoje i okolica | Morze u Nas Darłówko"
+  description="Zobacz zdjęcia pokoi z łazienkami, domu z ogrodem oraz Darłówka: plaża, port rybacki, zachody słońca i lokalne atrakcje. Galeria Morze u Nas."
+  ogImage={ogPhoto}
+>
+  <PageHeader
+    eyebrow="Galeria"
+    title="Zobacz nasze pokoje i Darłówko"
+    lead="Kliknij zdjęcie, aby je powiększyć. Strzałkami przejdziesz do kolejnych ujęć."
+  />
+
+  <section class="section" aria-labelledby="galeria-pokoje">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="galeria-pokoje">Pokoje</h2>
+      </div>
+      <GalleryGrid photos={roomPhotos} group="pokoje" />
+    </div>
+  </section>
+
+  <section class="section section--sand" aria-labelledby="galeria-dom">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="galeria-dom">Dom i posesja</h2>
+      </div>
+      <GalleryGrid photos={housePhotos} group="dom" />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="galeria-okolica">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="galeria-okolica">Darłówko i okolica</h2>
+      </div>
+      <GalleryGrid photos={surroundingPhotos} group="okolica" />
+    </div>
+  </section>
+
+  <section class="section section--sand" id="z-drona" aria-labelledby="galeria-dron">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="galeria-dron">Darłówko z lotu ptaka</h2>
+        <p>
+          Dwa krótkie przeloty dronem: nad naszym domem i wybrzeżem oraz nad
+          morzem, portem i riwierą Darłówka.
+        </p>
+      </div>
+      <div class="video-grid">
+        <VideoEmbed videoId="9SGAphx7x6U" title="Nad domem i lazurowym wybrzeżem" />
+        <VideoEmbed videoId="7xvAHsldT4k" title="Morze, port i riwiera Darłówka" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+  <Lightbox />
+  <DroneFab />
+</BaseLayout>
+
+<style>
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: var(--space-6);
+  }
+</style>

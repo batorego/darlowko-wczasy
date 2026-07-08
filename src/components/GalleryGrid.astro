@@ -1,0 +1,101 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { GalleryPhoto } from '../data/gallery';
+
+interface Props {
+  photos: GalleryPhoto[];
+  /** Zdjęcia o tej samej grupie przegląda się strzałkami w lightboksie. */
+  group: string;
+}
+
+const { photos, group } = Astro.props;
+
+// Pełne rozmiary do lightboxa — bez skalowania w górę ponad źródło.
+const items = await Promise.all(
+  photos.map(async (photo) => {
+    const full = await getImage({
+      src: photo.src,
+      width: Math.min(1600, photo.src.width),
+      format: 'webp',
+      quality: 82,
+    });
+    return { ...photo, fullSrc: full.src };
+  })
+);
+---
+
+<ul class="gallery-grid" role="list">
+  {
+    items.map((item) => (
+      <li>
+        <a
+          class="gallery-item"
+          href={item.fullSrc}
+          data-lightbox={group}
+          data-caption={item.alt}
+        >
+          <Image
+            src={item.src}
+            alt={item.alt}
+            width={640}
+            widths={[320, 480, 640]}
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 360px"
+            format="webp"
+            quality={80}
+            loading="lazy"
+            class="gallery-thumb"
+          />
+          <span class="gallery-caption">{item.alt}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .gallery-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: var(--space-4);
+  }
+
+  .gallery-item {
+    position: relative;
+    display: block;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-1);
+    text-decoration: none;
+    transition: box-shadow 200ms ease, transform 200ms ease;
+  }
+
+  .gallery-item:hover {
+    box-shadow: var(--shadow-2);
+    transform: translateY(-3px);
+  }
+
+  .gallery-item :global(.gallery-thumb) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .gallery-caption {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    padding: var(--space-6) var(--space-3) var(--space-2);
+    background: linear-gradient(to top, rgb(10 46 61 / 0.78), rgb(10 46 61 / 0));
+    color: var(--white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-item:hover {
+      transform: none;
+    }
+  }
+</style>
