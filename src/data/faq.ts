@@ -33,7 +33,7 @@ export const faq: FaqEntry[] = [
   {
     question: 'Czy mogę przygotować posiłek na miejscu?',
     answer:
-      'Tak — do dyspozycji gości jest wspólny aneks kuchenny z wyposażeniem oraz kącik do grillowania w ogrodzie. Naprzeciwko domu działa stołówka, a około 100 m dalej bary, smażalnie ryb i restauracje.',
+      'Tak — do dyspozycji gości jest wspólny aneks kuchenny z płytą indukcyjną, w sam raz na przygotowanie prostych posiłków. Naprzeciwko domu działa stołówka, a około 100 m dalej bary, smażalnie ryb i restauracje.',
     confirmed: true,
   },
   {
